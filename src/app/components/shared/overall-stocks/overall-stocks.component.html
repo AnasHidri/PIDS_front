@@ -1,0 +1,29 @@
+
+        
+        <!-- Page content -->
+        <app-stockscards></app-stockscards>
+        <table class="assets-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Stocks</th>
+                <th>Risque (Percentage)</th>
+                <th>Value</th>
+                <th>Investment Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let asset of assets; let i = index" [ngClass]="{'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0, 'good-investment': asset.risquePercentage < 10, 'bad-investment': asset.risquePercentage >= 10}">
+                <td>{{ asset.action }}</td>
+                <td>{{ asset.stocks }}</td>
+                <td>{{ asset.risquePercentage }}</td>
+                <td>{{ asset.value }}</td>
+                <td [ngClass]="{'good-recommendation': asset.risquePercentage < 10, 'bad-recommendation': asset.risquePercentage >= 10}">
+                  <span [ngStyle]="{'color': asset.risquePercentage < 10 ? 'green' : 'red'}">
+                    {{ asset.risquePercentage < 10 ? 'Good to Invest' : 'Not Recommended' }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+     

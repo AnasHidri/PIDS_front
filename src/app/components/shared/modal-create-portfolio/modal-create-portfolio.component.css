@@ -1,0 +1,58 @@
+.custom-modal-container {
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    background-color: #F0F2F5;;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-field {
+    margin-bottom: 20px;
+  }
+  .form-field mat-label {
+    color: rgba(0, 0, 0, 0.54); /* Adjust the color as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: normal; /* Adjust the font weight as needed */
+  }
+  mat-slider {
+    width: 300px;
+  }
+  
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .action-button {
+    margin-right: 10px;
+  }
+  
+  h2 {
+    margin-bottom:0;
+  }
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid red;
+  }
+  h3 {
+    margin:0 0 30px;
+  } 
+
+  .percent {
+    color:green;
+    font-weight:bold;
+    text-align:center;
+    width:100%;
+    border:none;
+  }
+
+  

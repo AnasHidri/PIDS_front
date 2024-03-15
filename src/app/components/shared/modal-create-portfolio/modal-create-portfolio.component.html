@@ -1,0 +1,20 @@
+<div class="custom-modal-container">
+    <div mat-dialog-content>
+      <form class="form-container">
+        <h3>Name of the Portfolio</h3>
+    
+          <input matInput type="text" name="Portfolio">
+     
+        <h3>Risk Percentage (%)</h3>
+        <mat-slider>
+            <mat-slider thumbLabel tickInterval="10" min="0" max="100" step="1" name="riskPercentage" color="primary"></mat-slider>
+
+          </mat-slider>
+      </form>
+    </div>
+    <div mat-dialog-actions class="button-container">
+      <button mat-button color="primary" class="action-button">Create Portfolio</button>
+      <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
+    </div>
+  </div>
+  

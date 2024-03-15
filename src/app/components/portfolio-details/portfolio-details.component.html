@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!------<title> Website Layout | CodingLab</title>------>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+   </head>
+   <app-sidebar></app-sidebar>
+<body style="background-color: #F0F2F5;">
+
+
+    <div class="container" style=" margin-left: 18%; ">
+      
+      <div class="row" >
+        
+        <!-- Page content -->
+        <h1>Portfolio details  <button class="button" >Close portfolio</button></h1>  
+
+       <!-- <button (click)="test()">TEST</button>-->
+       <form>
+        <label>Name Portfolio      </label>
+        <input type="text" placeholder="Portfolio name"/>
+        <br>
+        <br>
+        <label>Start Capital      </label>
+        <input type="text" placeholder="Start capital"/>
+        <br>
+        <br>
+        <label>Starting day      </label>
+        <input type="date" value="Minimum" style="width: 20%;"/>
+    
+       
+
+        <app-risk-stats-portfolio></app-risk-stats-portfolio>
+
+        <h1>State :</h1>
+        <label>Current Capital     </label>
+        <input type="text" placeholder="Current capital"/>
+        <br>
+        <br>
+        <label>Total Return      </label>
+        <input type="text" placeholder="Total return"/>
+        <br>
+        <br>
+        <label>Reserve     </label>
+        <input type="text" placeholder="Reserve"/>
+        <br>
+        <br>
+        <label>Portfolio Volatility     </label>
+        <input type="text" placeholder="Minimum"/>
+        <input type="text" placeholder="Maximum"/>
+
+        <br>
+        <br>
+        <h1>Holdings</h1>
+        
+       </form>
+
+      </div>
+    </div>
+
+</body>
+</html>
