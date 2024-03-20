@@ -15,12 +15,11 @@ export class PortfolioDetailsComponent implements OnInit {
   }
 
   test(){
-   this.date= new Date();
-    this.portfolioService.get(this.date).subscribe(
+    this.portfolioService.get().subscribe(
       {
         next: res => {
-        
-          console.log("works")
+          console.log(res);
+                    console.log("works")
         },
         error: err => {
         console.log("not working")
