@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard/overallstocks', component: OverallStocksComponent },
   { path: 'portfolio', component: ViewPortfolioComponent },
   { path: 'stocks', component:StocksComponent},
-  { path: 'portfoliodetails', component:PortfolioDetailsComponent}
+  { path: 'portfoliodetails/:id', component:PortfolioDetailsComponent}
 ];
 
 @NgModule({

@@ -1,20 +1,46 @@
-<div class="custom-modal-container">
-    <div mat-dialog-content>
-      <form class="form-container">
-        <h3>Name of the Portfolio</h3>
-    
-          <input matInput type="text" name="Portfolio">
-     
-        <h3>Risk Percentage (%)</h3>
-        <mat-slider>
-            <mat-slider thumbLabel tickInterval="10" min="0" max="100" step="1" name="riskPercentage" color="primary"></mat-slider>
 
-          </mat-slider>
+  <div mat-dialog-content>
+      <form class="form-container">
+          <h3>Name of the Portfolio</h3>
+          <input matInput type="text" name="name" placeholder="Portfolio Name">
+        <br>
+          <h3>Start Date</h3>
+          <input matInput type="date" name="startDate">
+          <br>
+          <h3>Start Capital</h3>
+          <input matInput type="number" name="startCapital">
+          <br>
+          <h3>Volatility Min</h3>
+          <input matInput type="number" name="volatilityMin">
+          <br>
+          <h3>Volatility Max</h3>
+          <input matInput type="number" name="volatilityMax">
+          <br>
+          <h3>List of Allocations</h3>
+          <div *ngFor="let allocation of allocations; let i = index">
+            <mat-form-field>
+                <mat-label>Allocation Ticker</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let option of allocationOptions" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <input matInput type="number" name="allocationCapitalPercentMin{{ i }}" placeholder="Allocation Capital Percent Min">
+            <input matInput type="number" name="allocationCapitalPercentMax{{ i }}" placeholder="Allocation Capital Percent Max">
+        </div>
+          <br>
+          <h3>List of Fees</h3>
+          <div *ngFor="let fee of fees; let i = index">
+            <mat-form-field>
+              <mat-label>Fees Ticker</mat-label>
+              <mat-select>
+                  <mat-option *ngFor="let option of feese" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+              <input matInput type="number" name="feeValue{{ i }}" placeholder="Fee Value">
+          </div>
       </form>
-    </div>
-    <div mat-dialog-actions class="button-container">
+  </div>
+  <div mat-dialog-actions class="button-container">
       <button mat-button color="primary" class="action-button">Create Portfolio</button>
       <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
-    </div>
   </div>
-  

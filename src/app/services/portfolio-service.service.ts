@@ -27,4 +27,15 @@ export class PortfolioServiceService {
     return this.httpClient.get<PortfolioSettings>(this.url + '/api/portfolio/');
   }
 
+  public getById(id:string): Observable<any> {
+    console.log("api work from front")
+    return this.httpClient.get<PortfolioSettings>(this.url + '/api/portfolio/'+id);
+  }
+
+  public CreatePortfolio(portfolioSettings: PortfolioSettings): Observable<any> {
+    console.log("api work from front")
+    return this.httpClient.post(this.url + '/api/portfolio/',portfolioSettings);
+  }
+
+
 }
