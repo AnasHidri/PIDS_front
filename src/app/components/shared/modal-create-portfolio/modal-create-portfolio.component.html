@@ -1,46 +1,54 @@
+<div mat-dialog-content>
+    <form class="form-container">
+      <h3>Name of the Portfolio</h3>
+      <input matInput type="text" name="name" placeholder="Portfolio Name" [(ngModel)]="NewPortfolio.name">
+      <br>
+      <h3>Start Date</h3>
+      <input matInput type="date" name="startDate" [(ngModel)]="NewPortfolio.start_day">
+      <br>
+      <h3>Start Capital</h3>
+      <input matInput type="number" name="startCapital" [(ngModel)]="NewPortfolio.start_capital">
+      <br>
+      <h3>Volatility Min</h3>
+      <input matInput type="number" name="volatilityMin" [(ngModel)]="NewPortfolio.volatility_min">
+      <br>
+      <h3>Volatility Max</h3>
+      <input matInput type="number" name="volatilityMax" [(ngModel)]="NewPortfolio.volatility_max">
+      <br>
+      <h3>Maximum stocks in the portfolio</h3>
+      <input matInput type="number" name="Maximum stocks" [(ngModel)]="NewPortfolio.diversification_max">
+      <br>
+      <h3>Minimum stocks in the portfolio</h3>
+      <input matInput type="number" name="Minimum stocks" [(ngModel)]="NewPortfolio.diversification_min">
+      <br>
+   
+      <h3>List of Allocations</h3>
+      <div *ngFor="let allocation of selectedAllocations; let i = index;">
+        <mat-form-field>
+          <mat-label>Allocation Ticker</mat-label>
+          <mat-select [(ngModel)]="selectedAllocations[i]" name="{{ getUniqueName(i) }}">
+            <mat-option *ngFor="let option of allocations" [value]="option">{{ option.ticker }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <input matInput type="number"  [(ngModel)]="selectedAllocations[i].capital_percent_min" name="{{ getUniqueName(i) }}-capital-percent-min" placeholder="Allocation Capital Percent Min">
+        <input matInput type="number" [(ngModel)]="selectedAllocations[i].capital_percent_max" name="{{ getUniqueName(i) }}-capital-percent-max" placeholder="Allocation Capital Percent Max">
+      </div>
+      <button mat-button color="primary" (click)="addNewAllocation()">Add Allocation</button>
+      <br>
 
-  <div mat-dialog-content>
-      <form class="form-container">
-          <h3>Name of the Portfolio</h3>
-          <input matInput type="text" name="name" placeholder="Portfolio Name">
-        <br>
-          <h3>Start Date</h3>
-          <input matInput type="date" name="startDate">
-          <br>
-          <h3>Start Capital</h3>
-          <input matInput type="number" name="startCapital">
-          <br>
-          <h3>Volatility Min</h3>
-          <input matInput type="number" name="volatilityMin">
-          <br>
-          <h3>Volatility Max</h3>
-          <input matInput type="number" name="volatilityMax">
-          <br>
-          <h3>List of Allocations</h3>
-          <div *ngFor="let allocation of allocations; let i = index">
-            <mat-form-field>
-                <mat-label>Allocation Ticker</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let option of allocationOptions" [value]="option">{{ option }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <input matInput type="number" name="allocationCapitalPercentMin{{ i }}" placeholder="Allocation Capital Percent Min">
-            <input matInput type="number" name="allocationCapitalPercentMax{{ i }}" placeholder="Allocation Capital Percent Max">
-        </div>
-          <br>
-          <h3>List of Fees</h3>
-          <div *ngFor="let fee of fees; let i = index">
-            <mat-form-field>
-              <mat-label>Fees Ticker</mat-label>
-              <mat-select>
-                  <mat-option *ngFor="let option of feese" [value]="option">{{ option }}</mat-option>
-              </mat-select>
-          </mat-form-field>
-              <input matInput type="number" name="feeValue{{ i }}" placeholder="Fee Value">
-          </div>
-      </form>
-  </div>
-  <div mat-dialog-actions class="button-container">
-      <button mat-button color="primary" class="action-button">Create Portfolio</button>
-      <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
-  </div>
+      <h3>List of Fees</h3>
+      <div *ngFor="let fee of fees; let i = index">
+        <mat-form-field>
+          <mat-label>Fees Ticker</mat-label>
+          <mat-select [(ngModel)]="fee.type" name="feeType{{ i }}">
+            <mat-option *ngFor="let option of feeOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <input matInput type="number" [(ngModel)]="fee.value" name="feeValue{{ i }}" placeholder="Fee Value">
+      </div>
+    </form>
+</div>
+<div mat-dialog-actions class="button-container">
+    <button mat-button color="primary" class="action-button"  (click)="onCreatePortfolio()">Create Portfolio</button>
+    <button mat-button mat-dialog-close class="cancel-button">Cancel</button>
+</div>

@@ -20,6 +20,7 @@
 
        <!-- <button (click)="test()">TEST</button>-->
        <form>
+
         <label>Name Portfolio      </label>
         <input type="text" placeholder="Portfolio name" value="{{portfolio.name}}"/>
         <br>
@@ -30,11 +31,30 @@
         <br>
         <label>Starting day      </label>
         <input type="date" value="Minimum" style="width: 20%;" value="{{portfolio.start_day}}"/>
+        <br>
+        <br>
+        <label>Fees Type    </label>
+        <input type="text" placeholder="Current capital" value="{{fee.type}}"/>
+
+        <label>                   Value      </label>
+        <input type="text" placeholder="Total return"   value="{{fee.value}}"/>
+          <h1>Volatility :</h1>
+          <label>Volatility min    </label>
+          <input type="text" placeholder="Current capital" value="{{portfolio.volatility_min}}"/>
+  
+          <label>                   Volatility max    </label>
+          <input type="text" placeholder="Total return"   value="{{portfolio.volatility_max}}"/>
+         
+           
     
        
 
         <app-risk-stats-portfolio></app-risk-stats-portfolio>
-        <div *ngFor="let consult of portfolio.states; let index=index">
+
+        <br>
+        <h2>Select date </h2>
+        <input type="date" name="selectedDate" [(ngModel)]="date" (change)="filterStates()" />
+        <div *ngFor="let consult of filteredStates; let index=index">
         <h1>State {{index+1}}:</h1>
         <label>Current Capital     </label>
         <input type="text" placeholder="Current capital" value="{{consult.current_capital}}"/>
@@ -45,26 +65,24 @@
         <br>
         <label>Reserve     </label>
         <input type="text" placeholder="Reserve" value="{{consult.reserve}}"/>
-        <label>                     Date    </label>
-        <input type="text" placeholder="Minimum"  value="{{consult.date}}"/>
-        <br>
-        <br>
-        <label>Volatility   </label>
+        <label>                     Volatility    </label>
         <input type="text" placeholder="Maximum" value="{{consult.volatility}}"/>
+        <div *ngFor="let consult2 of consult.allocation; let index=index">
+          <h1>Holdings {{index+1}}:</h1>
+          <label>Ticker    </label>
+          <input type="text" placeholder="Current capital" value="{{consult2.ticker}}"/>
+  
+          <label>                   Capital percent      </label>
+          <input type="text" placeholder="Total return"   value="{{consult2.capital_percent}}"/>
+         
+            </div>
+
+       
           </div>
         <br>
         <br>
         
-        <div *ngFor="let consult of portfolio.allocations; let index=index">
-          <h1>Holdings {{index+1}}:</h1>
-          <label>Ticker    </label>
-          <input type="text" placeholder="Current capital" value="{{consult.ticker}}"/>
-  
-          <label>                   Capital percent      </label>
-          <input type="text" placeholder="Total return"   value="{{consult.capital_percent}}"/>
-         
-            </div>
-
+      
 
 
        </form>
