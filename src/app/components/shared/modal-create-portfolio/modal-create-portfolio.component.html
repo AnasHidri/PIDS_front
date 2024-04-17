@@ -30,22 +30,26 @@
             <mat-option *ngFor="let option of allocations" [value]="option">{{ option.ticker }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <input matInput type="number"  [(ngModel)]="selectedAllocations[i].capital_percent_min" name="{{ getUniqueName(i) }}-capital-percent-min" placeholder="Allocation Capital Percent Min">
-        <input matInput type="number" [(ngModel)]="selectedAllocations[i].capital_percent_max" name="{{ getUniqueName(i) }}-capital-percent-max" placeholder="Allocation Capital Percent Max">
+        <input matInput type="number"  [(ngModel)]="selectedAllocations[i].capital_percent" name="{{ getUniqueName(i) }}-capital-percent-min" placeholder="capital_percent">
       </div>
       <button mat-button color="primary" (click)="addNewAllocation()">Add Allocation</button>
       <br>
 
+
       <h3>List of Fees</h3>
-      <div *ngFor="let fee of fees; let i = index">
+      <div *ngFor="let fee of selectedfees; let i = index;">
         <mat-form-field>
-          <mat-label>Fees Ticker</mat-label>
-          <mat-select [(ngModel)]="fee.type" name="feeType{{ i }}">
-            <mat-option *ngFor="let option of feeOptions" [value]="option">{{ option }}</mat-option>
+          <mat-label>Type of fee</mat-label>
+          <mat-select [(ngModel)]="selectedfees[i]" name="{{ getUniqueName(i) }}">
+            <mat-option *ngFor="let option of fees" [value]="option">{{ option.type }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <input matInput type="number" [(ngModel)]="fee.value" name="feeValue{{ i }}" placeholder="Fee Value">
+        <input matInput type="number"  [(ngModel)]="selectedfees[i].value" name="{{ getUniqueName(i) }}-value" placeholder="value">
       </div>
+      <button mat-button color="primary" (click)="addNewFee()">Add Fee</button>
+      <br>
+
+
     </form>
 </div>
 <div mat-dialog-actions class="button-container">

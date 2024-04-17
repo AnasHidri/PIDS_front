@@ -23,6 +23,8 @@ export class ModalCreatePortfolioComponent {
   allocations: AllocationPreference[] = [];
   selectedAllocation = new AllocationPreference;
   selectedAllocations: AllocationPreference[] = [];
+  selectedfees: Fees[]=[];
+  selectedfee = new Fees;
 
 
   constructor(private feesService: FeesServiceService, private portfolioService: PortfolioServiceService,
@@ -57,10 +59,14 @@ export class ModalCreatePortfolioComponent {
     this.selectedAllocations.push(newAllocation);
   }
   addNewFee() {
-    this.fees.push({ id:0, type: 'fixed', value: 0 });
+    this.selectedfees.push({ _id:0, type: 'fixed', value: 0 });
   }
   onSelectAllocation(allocation: AllocationPreference) {
     this.selectedAllocation = allocation;
+  }
+
+  onSelectfees(fee: Fees) {
+    this.selectedfee = fee;
   }
 
   onCreatePortfolio() {
@@ -79,8 +85,11 @@ export class ModalCreatePortfolioComponent {
       return;
     }
 
-    this.NewPortfolio.allocations = this.allocations.map(allocation => allocation.id);
-    this.NewPortfolio.fees=this.fees[0].id;
+    console.log("this is the allocations", this.selectedAllocations);
+    console.log("this is the fees",  this.selectedfees);
+
+    this.NewPortfolio.allocations = this.selectedAllocations.map(allocation => allocation._id);
+    this.NewPortfolio.fees=this.selectedfees[0]._id;
     console.log("new portfolio", this.NewPortfolio);
     this.portfolioService.CreatePortfolio(this.NewPortfolio).subscribe();
 

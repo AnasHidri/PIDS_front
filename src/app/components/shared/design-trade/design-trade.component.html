@@ -1,0 +1,71 @@
+<body>
+<div class="container">
+    <div class="app-risk-stats-portfolio">
+    <app-risk-stats-portfolio></app-risk-stats-portfolio>
+        </div>
+
+
+        <div class="market-history">
+            <h2 style="color: white;">Market History</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Stocks</th>
+                  <th>Price</th>
+        
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Add rows dynamically using Angular ngFor directive -->
+                <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.stocks < 0, 'white-row': transaction.stocks >= 0 }">
+                  <td>{{ transaction.stocks }}</td>
+                  <td>{{ transaction.price }}</td>
+              
+                  <td>{{ transaction.time }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <!-- Display the form -->
+    <div class="form-container">
+        <form>
+          <div class="form-group">
+            <label for="portfolioName">Portfolio Name</label>
+            <input type="text" id="portfolioName" name="portfolioName" placeholder="Enter Portfolio Name" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="startCapital">Start Capital ($)</label>
+            <input type="number" id="startCapital" name="startCapital" placeholder="Enter Start Capital" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="startingDay">Starting Day</label>
+            <input type="date" id="startingDay" name="startingDay" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="feesType">Fees Type</label>
+            <select id="feesType" name="feesType" required>
+              <option value="">Select Fees Type</option>
+              <option value="fixed">Fixed Fee</option>
+              <option value="percentage">Percentage Fee</option>
+              <!-- Add more fee types as needed -->
+            </select>
+          </div>
+      
+          <div class="form-group">
+            <label for="currentCapital">Current Capital ($)</label>
+            <input type="number" id="currentCapital" name="currentCapital" placeholder="Enter Current Capital" required>
+          </div>
+      
+          <div class="form-group">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      
+  </div>
+</body>

@@ -1,0 +1,20 @@
+/* Set the color of labels, date picker, and button to white */
+.mat-form-field-label, .mat-datepicker-toggle, .mat-button, .chart-axis, mat-label {
+    color: white !important;
+  }
+  
+  /* Set the background color of labels to transparent */
+  .mat-form-field-label {
+    background-color: transparent !important;
+  }
+  
+  /* Set the background color of date picker toggle to transparent */
+  .mat-datepicker-toggle {
+    background-color: transparent !important;
+  }
+  
+  /* Set the color of axes ticks and labels to white */
+  .chart-axis tspan, .chart-axis text {
+    fill: white;
+  }
+  

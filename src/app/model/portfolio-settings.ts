@@ -4,7 +4,7 @@ import { Fees } from "./fees";
 import { State } from "./state";
 
 export class PortfolioSettings {
-    id: number;
+    _id: number;
     name:String;
     start_day:Date;
     start_capital:number;
@@ -20,7 +20,7 @@ export class PortfolioSettings {
 
 
     constructor() {
-        this.id=0;
+        this._id=0;
         this.name="";
         this.total_return=0;
         this.start_day= new Date();

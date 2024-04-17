@@ -40,6 +40,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PortfolioDetailsComponent } from './components/portfolio-details/portfolio-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DesignTradeComponent } from './components/shared/design-trade/design-trade.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     StocksComponent,
     PortfolioCardsComponent,
     ModalCreatePortfolioComponent,
-    PortfolioDetailsComponent
+    PortfolioDetailsComponent,
+    DesignTradeComponent
   ],
   imports: [
     FormsModule,

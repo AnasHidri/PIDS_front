@@ -46,10 +46,14 @@ export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
         plugins: {
           legend: {
             position: 'top',
+            labels: {
+              color: 'white' // Set legend labels color to white
+            }
           },
           title: {
             display: true,
             text: 'Risk and Stocks Line Chart',
+            color: 'white' // Set title color to white
           },
         },
         scales: {
@@ -61,7 +65,23 @@ export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
                 day: 'MMM dd', // Format for day labels
               },
             },
+            ticks: {
+              color: 'white' // Set x-axis ticks color to white
+            },
+            grid: {
+              color: 'grey' // Set y-axis grid lines color to white
+            }
+      
           },
+          y: {
+            ticks: {
+              color: 'white' // Set y-axis ticks color to white
+            },
+            grid: {
+              color: 'grey' // Set y-axis grid lines color to white
+            }
+          }
+        
         },
       },
     });

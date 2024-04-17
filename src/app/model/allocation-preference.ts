@@ -1,13 +1,12 @@
 export class AllocationPreference {
-    id:number;
+    _id:number;
     ticker:String;
-    capital_percent_min:number;
-    capital_percent_max:number;
+    capital_percent:number;
+
 
     constructor(){
-        this.id=0;
+        this._id=0;
         this.ticker="";
-        this.capital_percent_min=0;
-        this.capital_percent_max=0;
+        this.capital_percent=0;
     }
 }
