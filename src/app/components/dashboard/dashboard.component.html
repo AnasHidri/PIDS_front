@@ -1,40 +1,21 @@
 <body>
   <app-topbar></app-topbar>
   
-  <div class="cards">
-  <app-stockscards></app-stockscards>
-</div>
-
     <div class="container">
       <div class="app-risk-stats-portfolio">
-        <app-portfolio-cards></app-portfolio-cards>
+        <canvas id="myChart" width="400" height="400"></canvas>
+
           </div>
   
   
-          <div class="market-history">
-              <h2 style="color: white;">Daily Market</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Stocks</th>
-                    <th>Price</th>
-          
-                    <th>Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Add rows dynamically using Angular ngFor directive -->
-                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.price < 1, 'white-row': transaction.price >= 1 }">
-                    <td>{{ transaction.stocks }}</td>
-                    <td>{{ transaction.price }}</td>
-                
-                    <td>{{ transaction.time }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+  
   
       <!-- Display the form -->
-      
+      <div class="form-container">
+        <canvas id="myLineChart" width="500" height="560"></canvas>
+
+      </div>
+        
+          
     </div>
   </body>
