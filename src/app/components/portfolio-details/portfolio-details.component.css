@@ -1,54 +1,130 @@
-input[type=text] {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-  }
-  .button {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 70%;
-    cursor: pointer;
 
-  }
-  /* Style the date input */
-input[type="date"] {
-  padding: 8px;
+.container {
+  display: flex;
+}
+
+.app-risk-stats-portfolio {
+  flex: 1;
+}
+
+.form-container {
+  width: 30%;
+  box-sizing: border-box; /* Include padding and border in the width */
+  padding: 20px;
+}
+
+input[type=text] {
+ 
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+label{
+  color: white;
+}
+
+/* Styles for the form container */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Styles for form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Styles for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+/* Styles for input fields */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
-  color: #555;
+  box-sizing: border-box;
 }
 
-/* Style the date input on focus */
-input[type="date"]:focus {
-  outline: none;
-  border-color: #007bff; /* Change to your desired focus color */
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Change to your desired focus shadow */
-}
-
-/* Style the arrow button for the date input */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  background-color: transparent;
+/* Styles for submit button */
+button[type="submit"] {
+  background-color: #9e5d0d;
+  color: white;
+  padding: 12px 20px;
   border: none;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  margin: 0;
-  vertical-align: middle;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-/* Style the arrow icon */
-input[type="date"]::-webkit-calendar-picker-indicator::before {
-  content: "\25BC"; /* Unicode down arrow character */
-  display: inline-block;
-  font-size: 12px;
-  line-height: 1;
+button[type="submit"]:hover {
+  background-color: #502f08;
+}
+
+/* Styles for select dropdown */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* Styles for market history */
+/* Styles for market history table */
+.market-history {
+  background-color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+
+}
+
+
+.market-history th,
+.market-history td {
+border: 1px solid ; /* Set border to transparent */
+padding: 8px; /* Add padding for better readability */
+}
+
+.market-history th {
+background-color: #9e5d0d; /* Set background color for table headers */
+color: rgb(0, 0, 0); /* Set text color for table headers */
+}
+
+.market-history tr {
+background-color: #000000; /* Alternate row background color */
+}
+
+.red-row {
+color: rgb(151, 6, 6); /* Set text color for rows with negative change */
+}
+
+.white-row {
+color: green; /* Set text color for rows with non-negative change */
+}
+
+
+
+button{
+  background-color: #9e5d0d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #492b07;
 }

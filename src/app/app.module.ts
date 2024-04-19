@@ -41,6 +41,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { PortfolioDetailsComponent } from './components/portfolio-details/portfolio-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DesignTradeComponent } from './components/shared/design-trade/design-trade.component';
+import { TopbarComponent } from './components/shared/topbar/topbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { DesignTradeComponent } from './components/shared/design-trade/design-tr
     PortfolioCardsComponent,
     ModalCreatePortfolioComponent,
     PortfolioDetailsComponent,
-    DesignTradeComponent
+    DesignTradeComponent,
+    TopbarComponent
   ],
   imports: [
     FormsModule,

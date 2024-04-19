@@ -185,7 +185,7 @@
     margin-bottom: .5rem;
     padding: 0;
     white-space: normal;
-    color: inherit;
+    color: Black;
   }
   
   [type='number']::-webkit-inner-spin-button,
@@ -298,7 +298,7 @@
     word-wrap: break-word;
     border: 1px solid rgba(0, 0, 0, .05);
     border-radius: .375rem;
-    background-color: #fff;
+    background-color: #ffffff;
     background-clip: border-box;
   }
   

@@ -1,94 +1,78 @@
-<!DOCTYPE html>
-<!-- Created By CodingNepal - www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!------<title> Website Layout | CodingLab</title>------>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-   </head>
-   <app-sidebar></app-sidebar>
-<body style="background-color: #F0F2F5;">
+<body>
+  <app-topbar></app-topbar>
+  
+    <div class="container">
+      <div class="app-risk-stats-portfolio">
+      <app-risk-stats-portfolio></app-risk-stats-portfolio>
+          </div>
+  
+  
+          <div class="market-history">
+              <h2 style="color: white;">Market History</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Stocks</th>
+                    <th>Price</th>
+          
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Add rows dynamically using Angular ngFor directive -->
+                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.stocks < 0, 'white-row': transaction.stocks >= 0 }">
+                    <td>{{ transaction.stocks }}</td>
+                    <td>{{ transaction.price }}</td>
+                
+                    <td>{{ transaction.time }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+      <!-- Display the form -->
+      <div class="form-container">
+        <h2 style="color: white;">Portfolio details <button class="button"  (click)="test()">Close portfolio</button> </h2>  
+          <form>
 
-
-    <div class="container" style=" margin-left: 18%; ">
-      
-      <div class="row" >
+            <div class="form-group">
+              <label for="portfolioName">Portfolio Name</label>
+              <input type="text" placeholder="Portfolio name" value="{{portfolio.name}}"/>
+            </div>
         
-        <!-- Page content -->
-        <h1>Portfolio details  <button class="button"  (click)="test()">Close portfolio</button></h1>  
-
-       <!-- <button (click)="test()">TEST</button>-->
-       <form>
-
-        <label>Name Portfolio      </label>
-        <input type="text" placeholder="Portfolio name" value="{{portfolio.name}}"/>
-        <br>
-        <br>
-        <label>Start Capital      </label>
-        <input type="text" placeholder="Start capital" value="{{portfolio.start_capital}}"/>
-        <br>
-        <br>
-        <label>Starting day      </label>
-        <input type="date" value="Minimum" style="width: 20%;" value="{{portfolio.start_day}}"/>
-        <br>
-        <br>
-        <label>Fees Type    </label>
-        <input type="text" placeholder="Current capital" value="{{fee.type}}"/>
-
-        <label>                   Value      </label>
-        <input type="text" placeholder="Total return"   value="{{fee.value}}"/>
-          <h1>Volatility :</h1>
-          <label>Volatility min    </label>
-          <input type="text" placeholder="Current capital" value="{{portfolio.volatility_min}}"/>
-  
-          <label>                   Volatility max    </label>
-          <input type="text" placeholder="Total return"   value="{{portfolio.volatility_max}}"/>
-         
-           
-    
-       
-
-        <app-risk-stats-portfolio></app-risk-stats-portfolio>
-
-        <br>
-        <h2>Select date </h2>
-        <input type="date" name="selectedDate" [(ngModel)]="date" (change)="filterStates()" />
-        <div *ngFor="let consult of filteredStates; let index=index">
-        <h1>State {{index+1}}:</h1>
-        <label>Current Capital     </label>
-        <input type="text" placeholder="Current capital" value="{{consult.current_capital}}"/>
-
-        <label>                   Total Return      </label>
-        <input type="text" placeholder="Total return"   value="{{consult.total_return}}"/>
-        <br>
-        <br>
-        <label>Reserve     </label>
-        <input type="text" placeholder="Reserve" value="{{consult.reserve}}"/>
-        <label>                     Volatility    </label>
-        <input type="text" placeholder="Maximum" value="{{consult.volatility}}"/>
-        <div *ngFor="let consult2 of consult.allocation; let index=index">
-          <h1>Holdings {{index+1}}:</h1>
-          <label>Ticker    </label>
-          <input type="text" placeholder="Current capital" value="{{consult2.ticker}}"/>
-  
-          <label>                   Capital percent      </label>
-          <input type="text" placeholder="Total return"   value="{{consult2.capital_percent}}"/>
-         
+            <div class="form-group">
+              <label for="startCapital">Start Capital ($)</label>
+              <input type="text" placeholder="Start capital" value="{{portfolio.start_capital}}"/>
+            </div>
+        
+            <div class="form-group">
+              <label for="startingDay">Starting Day</label>
+              <input type="date" value="Minimum" style="width: 20%;" value="{{portfolio.start_day}}"/>
+            </div>
+        
+            <div class="form-group">
+              <label for="startingDay">Fees</label>
+              <input type="text" placeholder="Current capital" value="{{fee.type}}"/>
+            </div>
+        
+            <div class="form-group">
+              <label for="currentCapital">Volatility min ($)</label>
+              <input type="number" placeholder="Current capital" value="{{portfolio.volatility_min}}"/>
             </div>
 
-       
-          </div>
-        <br>
-        <br>
+            <div class="form-group">
+              <label for="currentCapital">Volatility max ($)</label>
+              <input type="number" placeholder="Total return"   value="{{portfolio.volatility_max}}"/>
+            </div>
         
-      
-
-
-       </form>
-
-      </div>
+            <div class="form-group">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        
     </div>
 
-</body>
-</html>
+
+    
+  </body>
