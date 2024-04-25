@@ -1,20 +1,20 @@
 <body>
   <app-topbar></app-topbar>
   
+  <select [(ngModel)]="selectedBank">
+    <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+  </select>
+  <button (click)="getDataAndCalculatePercentageChange(selectedBank, data)">Update</button>
+
     <div class="container">
       <div class="app-risk-stats-portfolio">
         <canvas id="myChart" width="400" height="400"></canvas>
 
           </div>
   
-  
-  
-  
-      <!-- Display the form -->
-      <div class="form-container">
-        <canvas id="myLineChart" width="500" height="560"></canvas>
-
-      </div>
+          <div class="form-container">
+            <canvas id="myLineChart" width="500" height="560"></canvas>
+          </div>
         
           
     </div>

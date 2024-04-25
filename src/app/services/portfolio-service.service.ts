@@ -37,5 +37,20 @@ export class PortfolioServiceService {
     return this.httpClient.post(this.url + '/api/portfoliosettings/',portfolioSettings);
   }
 
+  public getData(bank:String): Observable<any> {
+    
+    return this.httpClient.get(this.url + '/data/'+bank);
+  }
+
+  public getLastData(bank:String): Observable<any> {
+    
+    return this.httpClient.get(this.url + '/Lastdata/'+bank);
+  }
+
+  public getNames(): Observable<any> {
+    
+    return this.httpClient.get(this.url + '/Getnames/');
+  }
+
 
 }

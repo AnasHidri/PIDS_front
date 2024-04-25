@@ -1,21 +1,30 @@
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Input, SimpleChanges, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import { PortfolioServiceService } from 'src/app/services/portfolio-service.service';
 
 @Component({
   selector: 'app-risk-stats-portfolio',
   templateUrl: './risk-stats-portfolio.component.html',
   styleUrls: ['./risk-stats-portfolio.component.css']
 })
-export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
+export class RiskStatsPortfolioComponent implements OnInit, OnDestroy {
   private chart: Chart | undefined;
   startDate: Date | undefined;
   endDate: Date | undefined;
+  @Input() selectedBank: string = '';
+  data: any[] = [];
 
-  ngAfterViewInit() {
-    this.updateChart();
+  constructor(private portfolioService:PortfolioServiceService){}
+
+  ngOnInit():void {
+    this.getDataAndCalculatePercentageChange("BT"); // Fetch initial data
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getDataAndCalculatePercentageChange(this.selectedBank); // Fetch data when selectedBank changes
+  }
+  
   updateChart() {
     if (this.chart) {
       this.chart.destroy();
@@ -24,21 +33,20 @@ export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05', '2024-01-06', '2024-01-07', '2024-01-08', '2024-01-09', '2024-01-10', '2024-01-11', '2024-01-12', '2024-01-13', '2024-01-14'], // Example date labels
+        labels: this.data.map(item => item.date), // Use dates from data
         datasets: [
           {
-            label: 'Risk',
-            data: [10, 20, 15, 25, 10, 30, 29, 25, 35, 30, 40, 35, 45, 40], // Example risk data
+            label: 'Close',
+            data: this.data.map(item => item.close), // Use close prices from data
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
           },
           {
-            label: 'Stocks',
-            data: [15, 25, 20, 30, 5, 4, 7, 8, 10, 15, 12, 18, 20, 22], // Example stocks data
+            label: 'Open',
+            data: this.data.map(item => item.open), // Use open prices from data
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          },
-          // Add more datasets as needed
+          }
         ],
       },
       options: {
@@ -52,7 +60,7 @@ export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
           },
           title: {
             display: true,
-            text: 'Risk and Stocks Line Chart',
+            text: 'Close and Open Prices Line Chart', // Change chart title
             color: 'white' // Set title color to white
           },
         },
@@ -86,10 +94,21 @@ export class RiskStatsPortfolioComponent implements AfterViewInit, OnDestroy {
       },
     });
   }
+  
 
   ngOnDestroy() {
     if (this.chart) {
       this.chart.destroy();
     }
+  }
+
+  getDataAndCalculatePercentageChange(bank: string) {
+    this.portfolioService.getLastData(bank).subscribe({
+      next: res => {
+        this.data = res.slice(-10);
+        console.log(this.data);
+        this.updateChart(); // Update chart after data is fetched
+      }
+    });
   }
 }

@@ -16,19 +16,24 @@
   
   
           <div class="market-history">
+           
               <h2 style="color: white;">Daily Market</h2>
+              <select [(ngModel)]="selectedBank">
+                <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+              </select>
+              <button (click)="getDataAndCalculatePercentageChange(selectedBank)">Update</button>
               <table>
                 <thead>
                   <tr>
-                    <th>Stocks</th>
-                    <th>Price</th>
+                    <th>Open</th>
+                    <th>Close</th>
           
                     <th>Time</th>
                   </tr>
                 </thead>
                 <tbody>
                   <!-- Add rows dynamically using Angular ngFor directive -->
-                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.price < 1, 'white-row': transaction.price >= 1 }">
+                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.price < transaction.stocks, 'white-row': transaction.price >= transaction.stocks }">
                     <td>{{ transaction.stocks }}</td>
                     <td>{{ transaction.price }}</td>
                 

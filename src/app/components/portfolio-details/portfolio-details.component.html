@@ -3,12 +3,15 @@
   
     <div class="container">
       <div class="app-risk-stats-portfolio">
-      <app-risk-stats-portfolio></app-risk-stats-portfolio>
+        <app-risk-stats-portfolio [selectedBank]="selectedBank"></app-risk-stats-portfolio>
           </div>
   
   
           <div class="market-history">
               <h2 style="color: white;">Market History</h2>
+              <select [(ngModel)]="selectedBank" (ngModelChange)="getDataAndCalculatePercentageChange($event)">
+                <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+              </select>
               <table>
                 <thead>
                   <tr>
@@ -20,7 +23,7 @@
                 </thead>
                 <tbody>
                   <!-- Add rows dynamically using Angular ngFor directive -->
-                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.stocks < 0, 'white-row': transaction.stocks >= 0 }">
+                  <tr *ngFor="let transaction of transactions" [ngClass]="{ 'red-row': transaction.price < transaction.stocks, 'white-row': transaction.price >= transaction.stocks }">
                     <td>{{ transaction.stocks }}</td>
                     <td>{{ transaction.price }}</td>
                 
