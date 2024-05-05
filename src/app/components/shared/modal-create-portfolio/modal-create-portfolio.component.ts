@@ -25,12 +25,13 @@ export class ModalCreatePortfolioComponent {
   selectedAllocations: AllocationPreference[] = [];
   selectedfees: Fees[]=[];
   selectedfee = new Fees;
-
+  banks: string[] = [];
 
   constructor(private feesService: FeesServiceService, private portfolioService: PortfolioServiceService,
     private allocationpreferenceService:AllocationPreferencesServiceService) { }
 
   ngOnInit(): void {
+
     this.feesService.getFees().subscribe({
       next: res => {
         console.log(res);
@@ -38,6 +39,14 @@ export class ModalCreatePortfolioComponent {
         this.feeOptions = this.fees.map(fee => fee.type.toString()); 
 
       },
+    });
+
+    this.portfolioService.getNames().subscribe({
+      next: res => {
+        console.log(res);
+        this.banks = res.csv_filenames;
+        
+      }
     });
 
     this.allocationpreferenceService.getAllocationPreferences().subscribe({
@@ -48,6 +57,7 @@ export class ModalCreatePortfolioComponent {
   
       },
     });
+    
   }
 
   formatSliderValue(value: number) {
@@ -58,15 +68,8 @@ export class ModalCreatePortfolioComponent {
     const newAllocation = new AllocationPreference(); 
     this.selectedAllocations.push(newAllocation);
   }
-  addNewFee() {
-    this.selectedfees.push({ _id:0, type: 'fixed', value: 0 });
-  }
   onSelectAllocation(allocation: AllocationPreference) {
     this.selectedAllocation = allocation;
-  }
-
-  onSelectfees(fee: Fees) {
-    this.selectedfee = fee;
   }
 
   onCreatePortfolio() {
@@ -89,7 +92,7 @@ export class ModalCreatePortfolioComponent {
     console.log("this is the fees",  this.selectedfees);
 
     this.NewPortfolio.allocations = this.selectedAllocations.map(allocation => allocation._id);
-    this.NewPortfolio.fees=this.selectedfees[0]._id;
+    this.NewPortfolio.fees=this.selectedfee._id;
     console.log("new portfolio", this.NewPortfolio);
     this.portfolioService.CreatePortfolio(this.NewPortfolio).subscribe();
 
@@ -99,6 +102,12 @@ export class ModalCreatePortfolioComponent {
   getUniqueName(i: number): string {
     return `allocation-${i}`;
   }
+
+  onSelectFee(event: any) {
+    this.selectedfee = event.value;
+    console.log(this.selectedfee);
+  }
+
 
 
 

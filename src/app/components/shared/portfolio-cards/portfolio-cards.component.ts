@@ -20,17 +20,17 @@ export class PortfolioCardsComponent implements OnInit {
         next: res => {
           console.log(res);
           this.portfolio=res;
-                    console.log("works")
+        
         },
         error: err => {
         console.log("not working")
         }
       })
-      console.log("works");
+   
 
   }
   openDialog() {
-    console.log("test")
+    
     this.dialog.open(ModalCreatePortfolioComponent, {
       data:{
        

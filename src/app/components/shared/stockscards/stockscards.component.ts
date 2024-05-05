@@ -34,7 +34,7 @@ export class StockscardsComponent implements OnInit {
     this.portfolioService.getLastData(bank).subscribe({
       next: res => {
         data = res.slice(-10);
-        console.log(data);
+       
         this.percentages[index] = this.calculatePercentageChange(data);
       }
     });
@@ -51,7 +51,6 @@ export class StockscardsComponent implements OnInit {
 
     const roundedPercentageChange = Math.round(percentageChange * 1000) / 1000;
 
-    console.log("Percentage change:", roundedPercentageChange);
     return roundedPercentageChange;
 
 

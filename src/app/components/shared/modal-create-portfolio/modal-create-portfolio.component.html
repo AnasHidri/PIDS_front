@@ -37,16 +37,15 @@
 
 
       <h3>List of Fees</h3>
-      <div *ngFor="let fee of selectedfees; let i = index;">
+      
         <mat-form-field>
           <mat-label>Type of fee</mat-label>
-          <mat-select [(ngModel)]="selectedfees[i]" name="{{ getUniqueName(i) }}">
+          <mat-select [(ngModel)]="selectedfee" (selectionChange)="onSelectFee($event)">
             <mat-option *ngFor="let option of fees" [value]="option">{{ option.type }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <input matInput type="number"  [(ngModel)]="selectedfees[i].value" name="{{ getUniqueName(i) }}-value" placeholder="value">
-      </div>
-      <button mat-button color="primary" (click)="addNewFee()">Add Fee</button>
+        <input matInput type="number" name="feeValue" [(ngModel)]="selectedfee.value"  placeholder="value">
+
       <br>
 
 

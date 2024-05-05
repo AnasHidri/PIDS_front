@@ -1,12 +1,13 @@
 .custom-modal-container {
+  max-height: 80vh; /* Set a maximum height for the modal */
+  overflow-y: auto; 
+  background-color: #F0F2F5;
+  /* Add other styling properties as needed */
+}
 
-    height: auto;
-   
-    background-color: #F0F2F5;;
-  }
   
   .form-container {
-    display: flex;
+    
     flex-direction: column;
   }
   
@@ -18,9 +19,7 @@
     font-size: 16px; /* Adjust the font size as needed */
     font-weight: normal; /* Adjust the font weight as needed */
   }
-  mat-slider {
-    width: 300px;
-  }
+ 
   
   
   .button-container {

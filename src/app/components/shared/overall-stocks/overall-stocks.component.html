@@ -5,30 +5,48 @@
   <div class="cards">
     <app-stockscards></app-stockscards>
   </div>
-  
+  <div class="containerselect">
+  <select [(ngModel)]="selectedBank" (ngModelChange)="getDataAndCalculatePercentageChange($event)">
+    <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+  </select>
+</div>
     <div class="container">
       <div class="app-risk-stats-portfolio">
         <table class="assets-table">
           <thead>
             <tr>
-              <th style="color:#9e5d0d">Action</th>
-              <th style="color:#9e5d0d">Stocks</th>
-              <th style="color:#9e5d0d">Risque (Percentage)</th>
-              <th style="color:#9e5d0d">Value</th>
+              <th style="color:#9e5d0d">Date</th>
+              <th style="color:#9e5d0d">Open</th>
+              <th style="color:#9e5d0d">Close</th>
+              <th style="color:#9e5d0d">High</th>
+              <th style="color:#9e5d0d">Low</th>
+              <th style="color:#9e5d0d">Volume</th>
               <th style="color:#9e5d0d">Investment Recommendation</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let asset of assets; let i = index" [ngClass]="{'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0, 'good-investment': asset.risquePercentage < 10, 'bad-investment': asset.risquePercentage >= 10}">
-              <td>{{ asset.action }}</td>
-              <td>{{ asset.stocks }}</td>
-              <td>{{ asset.risquePercentage }}</td>
-              <td>{{ asset.value }}</td>
-              <td [ngClass]="{'good-recommendation': asset.risquePercentage < 10, 'bad-recommendation': asset.risquePercentage >= 10}">
-                <span [ngStyle]="{'color': asset.risquePercentage < 10 ? 'green' : 'red'}">
-                  {{ asset.risquePercentage < 10 ? 'Good to Invest' : 'Not Recommended' }}
+            <tr *ngFor="let asset of data; let i = index" [ngClass]="{'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0, 'good-investment': asset.risquePercentage < 10, 'bad-investment': asset.risquePercentage >= 10}">
+              <td>{{ asset.date }}</td>
+              <td>{{ asset.open }}</td>
+              <td>{{ asset.close }}</td>
+              <td>{{ asset.high }}</td>
+              <td>{{ asset.low }}</td>
+              <td>{{ asset.volume }}</td>
+              <td [ngClass]="{
+                'good-recommendation': asset.open < asset.close,
+                'bad-recommendation': asset.open >= asset.close,
+                'neutral-recommendation': asset.open === asset.close
+              }">
+                <span [ngStyle]="{
+                  'color': asset.open < asset.close ? 'green' : (asset.open > asset.close ? 'red' : 'darkorange')
+                }">
+                  {{ 
+                    asset.open < asset.close ? 'Good to Invest' : 
+                    (asset.open > asset.close ? 'Not Recommended' : 'Neutral') 
+                  }}
                 </span>
               </td>
+              
             </tr>
           </tbody>
         </table>

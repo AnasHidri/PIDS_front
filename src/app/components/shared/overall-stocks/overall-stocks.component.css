@@ -44,8 +44,7 @@ label {
 /* Styles for input fields */
 input[type="text"],
 input[type="number"],
-input[type="date"],
-select {
+input[type="date"] {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -54,9 +53,27 @@ select {
   box-sizing: border-box;
 }
 
+.containerselect {
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  height: 10vh; /* Adjust as needed */
+}
+
+select {
+  width: 10%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  
+}
+
 /* Styles for submit button */
-button[type="submit"] {
-  background-color: #4CAF50;
+button {
+  background-color: #9e5d0d;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -69,16 +86,7 @@ button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-/* Styles for select dropdown */
-select {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color: white;
-}
+
 
 /* Styles for market history */
 /* Styles for market history table */

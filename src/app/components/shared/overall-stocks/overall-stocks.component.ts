@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioServiceService } from 'src/app/services/portfolio-service.service';
 
 @Component({
   selector: 'app-overall-stocks',
@@ -19,10 +20,34 @@ export class OverallStocksComponent implements OnInit {
     { action: 'Hold', stocks: 'VWX', risquePercentage: 7, value: 1100 },
     { action: 'Buy', stocks: 'YZA', risquePercentage: 11, value: 950 },
   ];
+  data: any[] = [];
+  selectedBank: string = 'BT';
+  banks: string[] = [];
   
-  constructor() { }
+  constructor(private portfolioService:PortfolioServiceService) { }
 
   ngOnInit(): void {
+    this.getDataAndCalculatePercentageChange("BT");
+
+    this.portfolioService.getNames().subscribe({
+      next: res => {
+        console.log(res);
+        this.banks = res.csv_filenames;
+      }
+    });
+  }
+
+  getDataAndCalculatePercentageChange(bank: string) {
+    this.portfolioService.getLastData(bank).subscribe({
+      next: res => {
+        this.data = res.slice(-10);
+        console.log(this.data);
+      }
+    });
+  }
+
+  update(){
+
   }
 
 }
