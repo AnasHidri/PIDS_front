@@ -1,0 +1,12 @@
+<body>
+<app-topbar></app-topbar>
+
+<select [(ngModel)]="selectedBank" (ngModelChange)="getDataAndCalculatePercentageChange($event)">
+    <option *ngFor="let bank of banks" [value]="bank">{{ bank }}</option>
+  </select>
+
+<div id="chart">
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"></apx-chart>
+  </div>
+
+</body>

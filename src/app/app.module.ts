@@ -42,6 +42,8 @@ import { PortfolioDetailsComponent } from './components/portfolio-details/portfo
 import { HttpClientModule } from '@angular/common/http';
 import { DesignTradeComponent } from './components/shared/design-trade/design-trade.component';
 import { TopbarComponent } from './components/shared/topbar/topbar.component';
+import { CandlestickChartComponent } from './components/candlestick-chart/candlestick-chart.component';
+import { NgApexchartsModule  } from 'ng-apexcharts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,9 +60,11 @@ import { TopbarComponent } from './components/shared/topbar/topbar.component';
     ModalCreatePortfolioComponent,
     PortfolioDetailsComponent,
     DesignTradeComponent,
-    TopbarComponent
+    TopbarComponent,
+    CandlestickChartComponent
   ],
   imports: [
+    NgApexchartsModule,
     FormsModule,
     BrowserAnimationsModule,
     NgChartsModule,

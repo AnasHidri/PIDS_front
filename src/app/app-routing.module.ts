@@ -7,6 +7,7 @@ import { ViewPortfolioComponent } from './components/view-portfolio/view-portfol
 import { StocksComponent } from './components/stocks/stocks.component';
 import { PortfolioDetailsComponent } from './components/portfolio-details/portfolio-details.component';
 import { DesignTradeComponent } from './components/shared/design-trade/design-trade.component';
+import { CandlestickChartComponent } from './components/candlestick-chart/candlestick-chart.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'dashboard/design', component: DesignTradeComponent },
   { path: 'portfolio', component: ViewPortfolioComponent },
   { path: 'stocks', component:StocksComponent},
+  { path: 'candlestick', component:CandlestickChartComponent},
   { path: 'portfoliodetails/:id', component:PortfolioDetailsComponent}
 ];
 

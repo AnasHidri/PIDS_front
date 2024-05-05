@@ -47,6 +47,10 @@ export class PortfolioServiceService {
     return this.httpClient.get(this.url + '/Lastdata/'+bank);
   }
 
+  public getLastData30(bank:String): Observable<any> {
+    
+    return this.httpClient.get(this.url + '/Lastdata30/'+bank);
+  }
   public getNames(): Observable<any> {
     
     return this.httpClient.get(this.url + '/Getnames/');
